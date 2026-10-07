@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .error-container {
+      max-width: 550px;
+      padding: 40px 25px;
+    }
+
+    .error-code {
+      font-size: 100px;
+      font-weight: 800;
+      color: #ff4757;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 17px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .notice {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    button {
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .status {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="error-container">
+
+    <div class="error-code">404</div>
+
+    <h1>Page Not Found</h1>
+
+    <p>
+      We couldn't reach this page. Please check your internet connection,
+      or the website may be blocked on your network.
+    </p>
+
+    <div class="notice">
+      <strong>Possible reasons:</strong>
+      Your internet connection may be unavailable, the website may be
+      temporarily offline, or access to the website may be blocked.
+    </div>
+
+    <button onclick="location.reload()">
+      Try Again
+    </button>
+
+    <div class="status" id="status">
+      Checking your connection...
+    </div>
+
+  </div>
+
+  <script>
+    function checkConnection() {
+      const status = document.getElementById("status");
+
+      if (navigator.onLine) {
+        status.textContent =
+          "Your device appears to be connected to the internet.";
+      } else {
+        status.textContent =
+          "You appear to be offline. Please check your internet connection.";
+      }
+    }
+
+    window.addEventListener("online", checkConnection);
+    window.addEventListener("offline", checkConnection);
+
+    checkConnection();
+  </script>
+
+</body>
+</html>
